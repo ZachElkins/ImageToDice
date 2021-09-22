@@ -19,7 +19,8 @@
 */
 
 int dieSize = 20;
-String input_file = "my_picture.png";
+String input_file_path = "my_picture.png";
+String input_file = "";
 String output_dir = "./out";
 String type = "D";
 int s = 500;
@@ -27,14 +28,16 @@ Boolean inverted = false;
 
 void settings() {
   if (args != null && args.length <= 5) {
-    input_file = parseInt(args[0]) != -1 ? args[0] : input_file;
+    input_file_path = parseInt(args[0]) != -1 ? args[0] : input_file_path;
     output_dir =  parseInt(args[1]) != -1 ? args[1] : output_dir;
     
     type = parseInt(args[2]) != -1 ? args[2] : type;
     s = parseInt(args[3]) != -1 ? parseInt(args[3]) : s;
-    inverted = parseInt(args[3]) == 1;
+    inverted = parseInt(args[4]) == 1;
   }
-  
+
+  String[] input_file_path_split = input_file_path.split("/");
+  input_file = input_file_path_split[input_file_path_split.length-1].split("\\.")[0];
   size(s, s);
 }
 
@@ -43,7 +46,7 @@ void setup() {
   
   loadPixels();
   
-  PImage img = loadImage(input_file);
+  PImage img = loadImage(input_file_path);
  
   img.resize(width, height);
   img.loadPixels();
@@ -89,7 +92,7 @@ void grayscale(int[] brightness) {
   
   updatePixels();
   
-  save(output_dir+"/"+input_file+"_grayscale.png");
+  save(generateFileName("grayscale"));
 }
 
 void simpleGrayscale(int[] brightness) {
@@ -109,7 +112,7 @@ void simpleGrayscale(int[] brightness) {
   
   updatePixels();
   
-  save(output_dir+"/"+input_file+"_simple-grayscale.png");
+  save(generateFileName("simple_grayscale"));
 }
 
 void dice(PImage img) {
@@ -136,10 +139,10 @@ void dice(PImage img) {
     }
   }
  
-  save(output_dir+"/"+input_file+"_dice.png");
+  save(generateFileName("dice"));
 }
 
-void drawDie( int num, int x, int y, int s ) {
+void drawDie(int num, int x, int y, int s) {
   int or = int(dieSize/10);
   int dr = floor(dieSize/4);
   int o = ceil(dieSize/4);
@@ -187,4 +190,9 @@ void drawDie( int num, int x, int y, int s ) {
       ellipse(x+s-o, y+o, dr, dr);
       break;
   }
+}
+
+String generateFileName(String type) {
+  String inv = inverted ? "_inverted" : "";
+  return output_dir+"/"+input_file+"_"+type+inv+"_"+s+"x"+s+".png";
 }
