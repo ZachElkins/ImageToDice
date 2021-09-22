@@ -26,29 +26,39 @@ processing-java --sketch=`pwd` --run
 ## Example Output
 _Image curtosy of [pexels.com](https://www.pexels.com/photo/selective-focus-photography-of-orange-tabby-cat-1170986/)_
 
-### Input: `examples/cat.png`
-<img src="example/../examples/cat.png" width=500>
+### Input
+<img src="example/../examples/cat.png" width=250>
 
-### Dice: `examples/cat_dice_1500x1500.png`
-`processing-java --sketch=`pwd` --run ./examples/cat.png ./examples -1 1500 -1`
+_examples/cat.png_
 
-<img src="examples/cat_dice_1500x1500.png" width=500>
+### Dice
+```processing-java --sketch=`pwd` --run ./examples/cat.png ./examples -1 1500 -1```
 
-### Grayscale: `examples/cat_grayscale_1500x1500.png`
-`processing-java --sketch=`pwd` --run ./examples/cat.png ./examples G 1500 -1`
+<img src="examples/cat_dice_1500x1500.png" width=250>
 
+_examples/cat_dice_1500x1500.png_
 
-<img src="examples/cat_grayscale_1500x1500.png" width=500>
-
-### Simple Grayscale `examples/cat_simple_grayscale_1500x1500.png`
-`processing-java --sketch=`pwd` --run ./examples/cat.png ./examples S 1500 -1`
+### Grayscale
+```processing-java --sketch=`pwd` --run ./examples/cat.png ./examples G 1500 -1```
 
 
-<img src="examples/cat_simple_grayscale_1500x1500.png" width=500>
+<img src="examples/cat_grayscale_1500x1500.png" width=250>
 
-### Dice (Inverted) `examples/cat_dice_inverted.png`
+_examples/cat_grayscale_1500x1500.png_
 
-`processing-java --sketch=`pwd` --run ./examples/cat.png ./examples -1 1500 1`
+### Simple Grayscale
+```processing-java --sketch=`pwd` --run ./examples/cat.png ./examples S 1500 -1```
 
 
-<img src="examples/cat_dice_inverted_1500x1500.png" width=500>
+<img src="examples/cat_simple_grayscale_1500x1500.png" width=250>
+
+_examples/cat_simple_grayscale_1500x1500.png_
+
+### Dice (Inverted)
+
+```processing-java --sketch=`pwd` --run ./examples/cat.png ./examples -1 1500 1```
+
+
+<img src="examples/cat_dice_inverted_1500x1500.png" width=250>
+
+_examples/cat_dice_inverted.png_
